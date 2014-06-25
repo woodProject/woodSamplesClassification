@@ -1,0 +1,8 @@
+
+wing images stand as the more distant to the group
+     'TF/1.18RB.png'
+     'TF/1.19RA.png'
+     'F/1.17RA.png'
+     'F/1.1RA.png'
+     'GG/2.12RB.png'
+
