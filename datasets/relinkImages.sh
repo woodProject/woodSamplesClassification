@@ -6,7 +6,7 @@ cd 0404WoodProcessedBalancedInputData;
 #    cd ..;
 #done
 
-newImagesLinkPath=/home/sik/Work/escola/recerca/Wood/images/0404CropProcessed/;
+newImagesLinkPath=D:\MatlabWorkspace\woodSamplesClassification\images/0404CropProcessed/;
 for ii in $(ls); 
 do 
     cd $ii; 
