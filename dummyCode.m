@@ -3,7 +3,6 @@ imagesDir = '/home/sik/Work/escola/recerca/Wood/imagesManipulationCut/';
 imageTypes = {'TF', 'F', 'M', 'GG'};
 
 imNames = cellfun(@(x) dir(fullfile(imagesDir,x,'*.png')),imageTypes,'UniformOutput',false);
-
 for typeIdx = 1:length(imageTypes)
      for imId = 1:length(imNames{typeIdx});
         imFullName = fullfile(imagesDir,imageTypes{typeIdx}, imNames{typeIdx}(imId).name);
@@ -66,8 +65,8 @@ end
 
 %% Generate a random balanced dataset for the images in 1004Crop directori
 
-imagesDir = '/home/sik/Work/escola/recerca/Wood/images/1004Crop/imAdjust/';
-outDir = '/home/sik/Work/escola/recerca/Wood/datasets/1004BalancedRandomDataset/';
+imagesDir = 'D:\MatlabWorkspace\woodSamplesClassification\images\1004Crop\imAdjust\';
+outDir = 'D:\MatlabWorkspace\woodSamplesClassification\datasets\1004BalancedRandomDataset\';
 nSamplesDesired = 20;
 
 sampleType = {'TF', 'F', 'M', 'GG'};
@@ -91,7 +90,9 @@ for ii=1:length(sampleType)
         linkName = fullfile(outDir,sampleType{ii},sprintf('%03d.png',sampleIdx));
         targetName = fullfile(imagesDir,imNames{currentTypeImageIdx(sampleIdx)});
         currentCommand = sprintf('ln -s %s %s',targetName,linkName);
-        system(currentCommand);
+%         unix('ln -s',targetName,linkName);
+%           dos(mklink,linkName,targetName)
+        system(['mklink "' linkName '" "' targetName '"']);
     end
 end
 

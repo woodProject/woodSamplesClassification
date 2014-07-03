@@ -81,4 +81,11 @@
 | |
 | |____calculations
 | | |# This folder contains calculations (so, keep it local)
+| |
+| |__ Dependencies
+| | |# Please change your own path for dataset.
+| | |# Add allcomb.m to path __ Ecternal libraray
+| | |# Add DataHash.m to path__ External Library
+| | |# Add EnsureDir.m to path and external library
+| | |# Include Vlfeat library
 ```
