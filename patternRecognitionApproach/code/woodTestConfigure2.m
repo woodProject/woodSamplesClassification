@@ -38,7 +38,7 @@ dataConf.datasetID = DataHash(cellfun(@sort,imageHashID,'UniformOutput',false),h
 
 
 function dataConf = generateDataConfiguration(testName)
-datasetRootDir = 'D:\MatlabWorkspace\woodSamplesClassification\datasets\';
+datasetRootDir = '/media/DATA/MatlabWorkspace/woodSamplesClassification/datasets/';
 % Root Directory changed
 missingConfiguration = false;
 switch testName
