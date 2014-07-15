@@ -161,8 +161,9 @@ global calcPoolDir
     dataCollection = cell(length(imgIdList),1);
     for ii=1:length(imgIdList)
         currentImgFeatCalculationFile = fullfile(featureParameters.dataStoragePath,sprintf('%s.mat',imgIdList{ii}));
-%         load('currentImgFeatCalculationFile','data');
         load(currentImgFeatCalculationFile,'data');
+%         load(currentImgFeatCalculationFile,'currentlbp');
+%         dataCollection{ii} = currentlbp;
         dataCollection{ii} = data;
     end
     

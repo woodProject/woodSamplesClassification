@@ -38,7 +38,7 @@ dataConf.datasetID = DataHash(cellfun(@sort,imageHashID,'UniformOutput',false),h
 
 
 function dataConf = generateDataConfiguration(testName)
-datasetRootDir = '/media/DATA/MatlabWorkspace/woodSamplesClassification/datasets/';
+datasetRootDir = '/media/muhammad/DATA/MatlabWorkspace/woodSamplesClassification/datasets/';
 % Root Directory changed
 missingConfiguration = false;
 switch testName
@@ -130,6 +130,9 @@ switch lower(testName)
         yy = generateExperimentConfiguration('basicfeatures');
         experimentConf = cell2struct([[{xx.dataModel}'; {yy.dataModel}'] [{xx.featureList}'; {yy.featureList}']], ...
                                      {'dataModel','featureList'},2);
+    case ('test33')
+        experimentConf.dataModel = 'svm';
+        experimentConf.featureList = {'lbp cellsize:100'};
     otherwise
         missingConfiguration = true;
         display('Unknown Feature Configuration, test1 applied');

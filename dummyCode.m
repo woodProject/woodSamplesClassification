@@ -119,3 +119,54 @@ wFeatConf.dataStoragePath = fullfile(conf.calcPoolDir,'features','waveletEnergy'
 mkdir(wFeatConf.dataStoragePath);
 calcWaveletEnergy(I,imgId,wFeatConf)
 
+%% Generate a balanced random dataset for the images in 1004Crop directori
+%  imagesDir = '/media/DATA/MatlabWorkspace/woodSamplesClassification/images/1004Crop/histEq/';
+ imagesDir = 'D:\MatlabWorkspace\woodSamplesClassification\images\1004Crop\histEq\';
+
+% outDir = '/media/DATA/MatlabWorkspace/woodSamplesClassification/datasets/1004BalancedDataset/';
+outDir = 'D:\MatlabWorkspace\woodSamplesClassification\datasets\1004BalancedDataset\';
+nSamplesDesired = 20;
+
+sampleType = {'TF', 'F', 'M', 'GG'};
+imNames = dir(fullfile(imagesDir,'*.png'));
+imNames = {imNames(:).name}';
+
+
+% Save random State and set it to the beginig to generate the same
+% simagesDirelection
+stream = RandStream.getGlobalStream;
+savedState = stream.State;
+reset(stream)
+
+for ii=1:length(sampleType)
+    mkdir(fullfile(outDir,sampleType{ii}));
+    currentRegExp = sprintf('[1-3]%s',sampleType{ii});
+    currentTypeImageIdx = find(~cellfun(@isempty,regexp(imNames,currentRegExp,'match')));
+    randomizedNsamples = randperm(length(currentTypeImageIdx),nSamplesDesired);
+    currentTypeImageIdx = currentTypeImageIdx(randomizedNsamples);
+    for sampleIdx=1:nSamplesDesired
+        linkName = fullfile(outDir,sampleType{ii},sprintf('%03d.png',sampleIdx));
+        targetName = fullfile(imagesDir,imNames{currentTypeImageIdx(sampleIdx)});
+        currentCommand = sprintf('ln -s %s %s',targetName,linkName);
+%         unix('ln -s',targetName,linkName);
+%           dos(mklink,linkName,targetName)
+        system(['mklink "' linkName '" "' targetName '"']);
+    end
+end
+
+% Restore the previous random state
+stream.State = savedState;
+%% Adjust the images for Edge Detections
+imagesDir = '/media/muhammad/DATA/MatlabWorkspace/woodSamplesClassification/images/1004Crop/imAdjust/';
+imageTypes = {'TF', 'F', 'M', 'GG'};
+
+imNames = cellfun(@(x) dir(fullfile(imagesDir,x,'*.png')),imageTypes,'UniformOutput',false);
+for typeIdx = 1:length(imageTypes)
+     for imId = 1:length(imNames{typeIdx});
+        imFullName = fullfile(imagesDir,imageTypes{typeIdx}, imNames{typeIdx}(imId).name);
+        currentImage = imread(imFullName);
+        if ndims(currentImage) == 3, currentImage = rgb2gray(currentImage);end
+        currentImage = imadjust(currentImage);
+        imwrite(currentImage,imFullName);        
+    end
+end

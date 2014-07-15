@@ -44,6 +44,8 @@ for featureIdx = 1:nFeaturesCollection
             featureCalcFun = @calcWaveletEnergy;
         case 'glcm'
             featureCalcFun = @calcGLCM;
+        case 'lbp'
+            featureCalcFun = @calclbp;
         otherwise
             error('woodTestEnsureFeatures:unkownFeature','%s is an unkown feature',featureName);
     end
