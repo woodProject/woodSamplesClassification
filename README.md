@@ -1,10 +1,12 @@
 # README
 # Project def
-This project, builds up a testing framework in matlab as a prileminary study for classifying different types of wood for barrel construction. 
+This project is a [proof of concept (POC)](http://en.wikipedia.org/wiki/Proof_of_concept). This project builds up a testing framework in matlab as a prileminary study for classifying different types of wood for barrel construction using an image retraible scheme:
+1. Each sample corresponds to a single image that is described with a set of features
+2. Classify this sample to determine the wood class in the picture
 
 ## Objectives
 The project has two main objectives: 
-* determine if its possible to diferenciate between wood types.
+* determine if its possible to differenciate between wood types.
 * the framework should allow to explore the following items without need of recoding. So that if the project moves forward, the framework can be used to take a decission in which is the optimal system configuration. 
   * features
   * feature-configurations
