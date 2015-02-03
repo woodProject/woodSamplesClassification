@@ -5,7 +5,7 @@ This project, builds up a testing framework in matlab as a prileminary study for
 ## Objectives
 The project has two main objectives: 
 * determine if its possible to diferenciate between wood types.
-* If it is possible to diferenciate between wood types, the framework would be used afterwards to further explore:
+* the framework should allow to explore the following items without need of recoding. So that if the project moves forward, the framework can be used to take a decission in which is the optimal system configuration. 
   * features
   * feature-configurations
   * classification strategies
