@@ -1,7 +1,18 @@
 # README
 # Project def
+This project, builds up a testing framework in matlab as a prileminary study for classifying different types of wood for barrel construction. 
+
 ## Objectives
-# Code structure
+The project has two main objectives: 
+* determine if its possible to diferenciate between wood types.
+* If it is possible to diferenciate between wood types, the framework would be used afterwards to further explore:
+  * features
+  * feature-configurations
+  * classification strategies
+  * classifier configurations
+
+
+## Code structure
 ```
 .# here is some code for specific tasks and dirty coding
 |____histogramsSignature.m
